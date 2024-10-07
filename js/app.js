@@ -7,13 +7,13 @@ let registerForm = document.querySelector(".second");
 loginForm.style.display = "flex";
 registerForm.style.display = "none";
 
-// Add event listener for when the "Register" button is clicked
+//  "Register" button is clicked
 registerClick.addEventListener("click", function () {
   registerForm.style.display = "flex";
   loginForm.style.display = "none";
 });
 
-// Add event listener for when the "Login" button is clicked
+//  "Login" button is clicked
 loginClick.addEventListener("click", function () {
   loginForm.style.display = "flex";
   registerForm.style.display = "none";
