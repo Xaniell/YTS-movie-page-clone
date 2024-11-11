@@ -1,106 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YTS</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <script src="js/app.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YTS</title>
-  <link rel="stylesheet" href="styles/styles.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" defer>
-</head>
-
-<body>
-
-  <!-- ***************HERO SECTION*************** -->
-  <header class="navBar">
-    <div class="navLogo pull-left">
-      <a href="https://yts.mx/"><img src="https://yts.mx/assets/images/website/logo-YTS.svg" alt="YIFY" /></a>
-      <span class="headerSlogan">HD movies at the smallest file size.</span>
-    </div>
-    <div class="mainNavLinks">
-      <div class="search">
-        <div class="bi bi-search"></div>
-        <input type="search" name="quickSearch" placeholder="Quicksearch">
+  <body>
+    <!-- Navbar -->
+    <header class="navBar">
+      <div class="navLogo pull-left">
+        <a href="https://yts.mx/"
+          ><img
+            src="https://yts.mx/assets/images/website/logo-YTS.svg"
+            alt="YIFY"
+        /></a>
+        <span class="headerSlogan">HD movies at the smallest file size.</span>
       </div>
-      <ul class="navLinks">
-        <li>Home</li>
-        <li style="color: #6ac045">4K</li>
-        <li>Trending</li>
-        <li>Browse Movies</li>
-      </ul>
-      <ul class="nav-links nav-link-guest">
-        <li>
-          <a class="loginNav" href="/"> Login </a>
-          &nbsp;|&nbsp;
-          <a class="registerNav href=" /"> Register </a>
-        </li>
-      </ul>
-    </div>
-  </header>
+      <div class="mainNavLinks">
+        <div class="search">
+          <div class="bi bi-search"></div>
+          <input type="search" name="quickSearch" placeholder="Quicksearch" />
+        </div>
+        <ul class="navLinks">
+          <li>Home</li>
+          <li style="color: #6ac045">4K</li>
+          <li>Trending</li>
+          <li>Browse Movies</li>
+        </ul>
+        <ul class="nav-links nav-link-guest">
+          <li>
+            <a class="loginNav" href="/"> Login </a>
+            &nbsp;|&nbsp;
+            <a class="registerNav" href="/"> Register </a>
+          </li>
+        </ul>
+      </div>
+    </header>
 
-  <div class="container">
-    <!-- **************HERO CONTENT*************** -->
-    <form class="first">
-      <div class="heading">
-        <div class="log">Login</div>
-        <div class="reg">Register</div>
+    <!-- Overlay for modal background -->
+    <div class="overlay"></div>
+
+    <!-- Modal Container -->
+    <div class="modal-container">
+      <div class="modal-switch">
+        <div class="login-tab active">Login</div>
+        <div class="register-tab">Register</div>
       </div>
       <span class="pdemo"></span>
-      <div class="mainInput">
-        <div class="user">
+      <!-- Login Form -->
+      <form class="modal-form login-form">
+        <div class="form-group">
           <i class="bi bi-person-fill"></i>
-          &nbsp;&nbsp;
-          <input class="other" type="text" placeholder="Username or Email" autofocus name="username" autocomplete="off">
+          <input
+            class="other"
+            type="text"
+            placeholder="Username or Email"
+            name="username"
+            autocomplete="off"
+          />
         </div>
-        <div class="user">
+        <div class="form-group">
           <i class="bi bi-lock-fill"></i>
-          &nbsp;&nbsp;
-          <input class="other" type="password" placeholder="Password" name="password" autocomplete="off">
+          <input
+            class="other"
+            type="password"
+            placeholder="Password"
+            name="password"
+            autocomplete="off"
+          />
         </div>
         <button class="submit">Login</button>
-      </div>
+      </form>
 
-    </form>
-
-    <!-- **************2 HERO CONTENT*************** -->
-
-    <!-- Second form (Register) -->
-    <form class="second">
-      <div class="heading">
-        <div class="log">Login</div>
-        <div class="reg">Register</div>
-      </div>
-      <span class="secondtext"></span>
-      <div class="mainInput">
-        <div class="user">
+      <!-- Register Form -->
+      <form class="modal-form register-form" style="display: none">
+        <div class="form-group">
           <i class="bi bi-person-fill"></i>
-          &nbsp;&nbsp;
-          <input class="secondOther" type="text" placeholder="Username" required name="username" autocomplete="off">
+          <input
+            class="other"
+            type="text"
+            placeholder="Username"
+            name="username"
+            autocomplete="off"
+          />
         </div>
-        <div class="user">
-          <i class="bi bi-envelope"></i>
-          &nbsp;&nbsp;
-          <input class="secondOther" type="text" placeholder="E-mail (No confirmation needed)" required name="email"
-            autocomplete="off">
+        <div class="form-group">
+          <i class="bi bi-envelope-fill"></i>
+          <input
+            class="other"
+            type="email"
+            placeholder="Email"
+            name="email"
+            autocomplete="off"
+          />
         </div>
-        <div class="user">
+        <div class="form-group">
           <i class="bi bi-lock-fill"></i>
-          &nbsp;&nbsp;
-          <input class="secondOther" type="password" placeholder="Password" required name="password" autocomplete="off">
+          <input
+            class="other"
+            type="password"
+            placeholder="Password"
+            name="password"
+            autocomplete="off"
+          />
         </div>
-        <div class="user">
+        <div class="form-group">
           <i class="bi bi-lock-fill"></i>
-          &nbsp;&nbsp;
-          <input class="secondOther" type="password" placeholder="Confirm password" required name="confirmPassword"
-            autocomplete="off">
+          <input
+            class="other"
+            type="password"
+            placeholder="Confirm Password"
+            name=" confirm password"
+            autocomplete="off"
+          />
         </div>
-        <p>By clicking Register, you agree to our <span class="terms">Terms and Conditions</span></p>
-        <button>Register</button>
+
+        <button class="submit">Register</button>
+      </form>
+    </div>
+
+    <main>
+      <h1>Download YTS YIFY movies: HD smallest size</h1>
+      <p>
+        Welcome to the official YTS.MX website. Here you can browse and download
+        YIFY movies in excellent 720p, 1080p, 2160p 4K and 3D quality, all at
+        the smallest file size. YTS Movies Torrents. <br />
+        <span
+          >IMPORTANT - YTS.MX is the only new official domain for YIFY
+          Movies</span
+        >
+      </p>
+      <div class="link">
+        YTSMX_UPDATES | Follow @YTSYIFY for upcoming featured movies!
       </div>
-    </form>
 
-  </div>
-  <script src="js/app.js"></script>
-</body>
+      <hr />
 
+      <div class="movie-box">
+        <div class="movie">
+          <img src="images/mega.jpg" alt="movie" />
+          <div class="title">Megaloplis</div>
+          <div class="year">2024</div>
+        </div>
+        <div class="movie">
+          <img src="images/myold.jpg" alt="movie" />
+          <div class="title">My Old ass</div>
+          <div class="year">2024</div>
+        </div>
+        <div class="movie">
+          <img src="images/letgo.jpg" alt="movie" />
+          <div class="title"><span> {SV} </span>Let Go</div>
+          <div class="year">2024</div>
+        </div>
+        <div class="movie">
+          <img src="images/deva.jpg" alt="movie" />
+          <div class="title"><span> {TE} </span>Let Go</div>
+          <div class="year">2024</div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

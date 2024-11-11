@@ -1,28 +1,54 @@
-let loginClick = document.querySelector(".log");
-let registerClick = document.querySelector(".reg");
+document.addEventListener("DOMContentLoaded", () => {
+  const loginNav = document.querySelector(".loginNav");
+  const registerNav = document.querySelector(".registerNav");
+  const overlay = document.querySelector(".overlay");
+  const modalContainer = document.querySelector(".modal-container");
+  const loginForm = document.querySelector(".login-form");
+  const registerForm = document.querySelector(".register-form");
+  const loginTab = document.querySelector(".login-tab");
+  const registerTab = document.querySelector(".register-tab");
 
-let loginForm = document.querySelector(".first");
-let registerForm = document.querySelector(".second");
+  function toggleModal(display) {
+    modalContainer.style.display = display ? "block" : "none";
+    overlay.style.display = display ? "block" : "none";
+  }
 
-loginForm.style.display = "flex";
-registerForm.style.display = "none";
+  loginNav.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent default anchor behavior
+    toggleModal(true);
+    showLoginForm();
+  });
 
-//  "Register" button is clicked
-registerClick.addEventListener("click", function () {
-  registerForm.style.display = "flex";
-  loginForm.style.display = "none";
+  registerNav.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent default anchor behavior
+    toggleModal(true);
+    showRegisterForm();
+  });
+
+  overlay.addEventListener("click", () => {
+    toggleModal(false);
+  });
+
+  function showLoginForm() {
+    loginForm.style.display = "flex";
+    registerForm.style.display = "none";
+    loginTab.classList.add("active");
+    registerTab.classList.remove("active");
+  }
+
+  function showRegisterForm() {
+    loginForm.style.display = "none";
+    registerForm.style.display = "flex";
+    loginTab.classList.remove("active");
+    registerTab.classList.add("active");
+  }
+
+  loginTab.addEventListener("click", showLoginForm);
+  registerTab.addEventListener("click", showRegisterForm);
 });
 
-//  "Login" button is clicked
-loginClick.addEventListener("click", function () {
-  loginForm.style.display = "flex";
-  registerForm.style.display = "none";
-});
 
-// *********** Form Validation Logic *********** //
-
-// For the first form (Login)
-let usernameInput1 = document.querySelector(".other");
+let usernameInput1 = document.querySelectorAll(".other");
 let passwordInput1 = document.querySelector('input[name="password"]');
 let theError1 = document.querySelector(".pdemo");
 let loginButton1 = document.querySelector(".submit");
@@ -45,7 +71,7 @@ let confirmPasswordInput2 = document.querySelector(
   'input[name="confirmPassword"]'
 );
 
-let theError2 = document.querySelector(".secondtext");
+// let theError2 = document.querySelector(".secondtext");
 let registerButton = document.querySelector(".second button");
 
 registerButton.addEventListener("click", function (e) {
@@ -56,9 +82,9 @@ registerButton.addEventListener("click", function (e) {
     passwordInput2.value === "" ||
     confirmPasswordInput2.value === ""
   ) {
-    theError2.innerText = "Error: All fields are required.";
-    theError2.style.display = "flex";
+    theError1.innerText = "Error: All fields are required.";
+    theError1.style.display = "flex";
   } else {
-    theError2.style.display = "none";
+    theError1.style.display = "none";
   }
 });
